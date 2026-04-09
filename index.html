@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLegado 2026 - VIPZ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@400;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Outfit', sans-serif; }
+        .hero-pattern { background-color: #f0fdf4; background-image: radial-gradient(#10b981 0.5px, transparent 0.5px), radial-gradient(#10b981 0.5px, #f0fdf4 0.5px); background-size: 20px 20px; background-position: 0 0, 10px 10px; }
+        .image-card:hover { transform: scale(1.02); transition: 0.3s; }
+        .floating-qr { position: fixed; bottom: 20px; right: 20px; z-index: 100; }
+        .project-img { height: 250px; width: 100%; object-fit: cover; border-bottom: 1px solid #f1f5f9; }
+        
+        /* Estilo para o input de arquivo ficar bonito */
+        .custom-file-upload {
+            border: 2px dashed #10b981;
+            display: inline-block;
+            padding: 12px;
+            cursor: pointer;
+            border-radius: 12px;
+            text-align: center;
+            width: 100%;
+            color: #065f46;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .custom-file-upload:hover { background: #ecfdf5; }
+        #file-upload { display: none; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- QR Code Flutuante -->
+    <div class="floating-qr bg-white p-3 rounded-2xl shadow-2xl border border-emerald-100 hidden md:block">
+        <img id="qr-code" src="" alt="QR Code" class="w-20 h-20 rounded-lg">
+        <p class="text-[8px] font-bold text-center mt-1 text-emerald-700 uppercase">Acesse o Site</p>
+    </div>
+
+    <!-- Navegação -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-emerald-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <span class="font-black text-xl text-emerald-900 tracking-tighter">ECOLEGADO <span class="text-emerald-500">2026</span></span>
+            <div class="hidden md:flex gap-6 font-bold text-xs uppercase text-emerald-800">
+                <a href="#inicio" class="hover:text-emerald-500 transition">Início</a>
+                <a href="#galeria" class="hover:text-emerald-500 transition">Galeria</a>
+                <a href="#projetos" class="hover:text-emerald-500 transition">Projetos</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="pt-32 pb-20 hero-pattern px-6 text-center">
+        <div class="inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
+            <i class="fas fa-leaf"></i> Sustentabilidade na Escola
+        </div>
+        <h1 class="text-5xl md:text-7xl font-black text-emerald-950 mb-6">Preservar é a nossa <br><span class="text-emerald-600">única missão.</span></h1>
+        <p class="text-slate-600 max-w-xl mx-auto mb-10 italic font-medium">Projeto desenvolvido pelos alunos da EEB Profª Valdete Inês Piazera Zindars.</p>
+    </header>
+
+    <!-- Galeria de Inspiração -->
+    <section id="galeria" class="py-16 container mx-auto px-6">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-black text-emerald-900 uppercase tracking-widest">Nossa Inspiração</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="rounded-3xl overflow-hidden shadow-lg h-64 relative group image-card">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Florestas">
+                <div class="absolute inset-0 bg-emerald-900/40 flex items-center justify-center font-bold text-white text-xl">Florestas</div>
+            </div>
+            <div class="rounded-3xl overflow-hidden shadow-lg h-64 relative group image-card">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Oceanos">
+                <div class="absolute inset-0 bg-blue-900/40 flex items-center justify-center font-bold text-white text-xl">Oceanos</div>
+            </div>
+            <div class="rounded-3xl overflow-hidden shadow-lg h-64 relative group image-card">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Clima">
+                <div class="absolute inset-0 bg-slate-900/40 flex items-center justify-center font-bold text-white text-xl">Clima</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Projetos -->
+    <section id="projetos" class="py-16 bg-emerald-50 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black text-emerald-900 uppercase tracking-widest">Mural de Projetos</h2>
+                <p class="text-slate-500 mt-2">Registre aqui as ações ecológicas realizadas pela nossa turma.</p>
+            </div>
+
+            <!-- Painel para Adicionar Foto -->
+            <div class="max-w-xl mx-auto bg-white p-8 rounded-[32px] shadow-xl border border-emerald-100 mb-16">
+                <h3 class="font-bold text-emerald-800 mb-6 flex items-center gap-2">
+                    <i class="fas fa-camera"></i> Novo Registro
+                </h3>
+                
+                <div class="flex flex-col gap-5">
+                    <!-- Upload de Arquivo -->
+                    <label for="file-upload" class="custom-file-upload">
+                        <i class="fas fa-upload mr-2"></i> Selecionar imagem do computador
+                    </label>
+                    <input id="file-upload" type="file" accept="image/*" onchange="previewImage(event)"/>
+                    
+                    <!-- Preview da imagem selecionada -->
+                    <div id="image-preview-container" class="hidden">
+                        <img id="temp-preview" src="" class="w-full h-40 object-cover rounded-xl border">
+                        <p class="text-[10px] text-center text-slate-400 mt-1">Imagem selecionada</p>
+                    </div>
+
+                    <!-- Input da Legenda -->
+                    <input type="text" id="img-caption" placeholder="Escreva a legenda aqui..." class="w-full p-4 rounded-xl bg-slate-50 border border-slate-200 outline-none focus:border-emerald-500 transition">
+                    
+                    <button onclick="addProject()" class="bg-emerald-600 text-white font-black py-4 rounded-xl hover:bg-emerald-700 transition shadow-lg shadow-emerald-200">
+                        Postar no Mural
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mural de Projetos -->
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- As imagens aparecerão aqui -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-emerald-950 text-emerald-700 py-12 text-center text-[10px] font-black uppercase tracking-[0.3em]">
+        EEB Profª Valdete Inês Piazera Zindars &copy; 2026 <br>
+        <span class="opacity-50 mt-2 block">Educação e Sustentabilidade</span>
+    </footer>
+
+    <script>
+        let selectedImageData = "";
+
+        // Função para gerar QR Code
+        window.onload = () => {
+            const url = window.location.href;
+            document.getElementById('qr-code').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(url)}`;
+        };
+
+        // Função para mostrar preview da imagem do computador
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function() {
+                selectedImageData = reader.result;
+                const previewImg = document.getElementById('temp-preview');
+                const container = document.getElementById('image-preview-container');
+                previewImg.src = selectedImageData;
+                container.classList.remove('hidden');
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        // Função para adicionar projetos dinamicamente
+        function addProject() {
+            const captionInput = document.getElementById('img-caption');
+            const grid = document.getElementById('projects-grid');
+
+            if (selectedImageData === "" || captionInput.value.trim() === "") {
+                alert("Por favor, selecione uma imagem e escreva uma legenda!");
+                return;
+            }
+
+            // Criar o elemento do cartão
+            const card = document.createElement('div');
+            card.className = "bg-white rounded-3xl overflow-hidden shadow-lg border border-slate-100 transform transition hover:scale-105 duration-300 animate-in fade-in zoom-in";
+            
+            card.innerHTML = `
+                <img src="${selectedImageData}" class="project-img" alt="Projeto">
+                <div class="p-6">
+                    <p class="text-emerald-950 font-bold text-lg leading-tight mb-2">${captionInput.value}</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-emerald-600 text-[10px] font-black uppercase tracking-widest">Ação VIPZ</span>
+                        <span class="text-slate-300 text-[10px]">Hoje</span>
+                    </div>
+                </div>
+            `;
+
+            // Adicionar ao mural
+            grid.prepend(card);
+
+            // Limpar campos e resetar preview
+            document.getElementById('img-caption').value = "";
+            document.getElementById('file-upload').value = "";
+            document.getElementById('image-preview-container').classList.add('hidden');
+            selectedImageData = "";
+        }
+    </script>
+</body>
+</html>
